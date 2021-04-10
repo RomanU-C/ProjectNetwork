@@ -4,12 +4,11 @@ import {
   Text,
   View,
 } from 'react-native';
+import Root from './src/components/navigation/Root';
 
 const App = () => {
  return (
-        <View>
-          <Text>Hello World</Text>
-        </View>
+        <Root />
   );
 };
 
