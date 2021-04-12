@@ -1,40 +1,77 @@
-import React from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
-import { Button, View } from 'react-native'
-import { LOGIN_FIELDS } from '../../constants'
-import { FormInput } from './FormInput'
-import { styles } from './Login.style'
-
-
+import React from "react";
+import { Text, View, TextInput, Button, Alert } from "react-native";
+import { useForm, Controller } from "react-hook-form";
+import { styles } from "./Login.style";
 
 const Login = () => {
-    const onSubmit = form => {
-        console.log(form.value)
-    }
+    const { control, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = data => (console.log(data));
 
-    const onErrors = errors => {
-        console.warn(errors)
-    }
-    const formMethods = useForm()
     return (
         <View style={styles.loginContainer}>
-            <View style={styles.loginInner}>
-                <FormProvider {...formMethods}>
-                    <FormInput style={styles.input} name={LOGIN_FIELDS.username} label='Username'
-                        rules={{ required: 'Username is required!' }} />
+            {errors.firstName ? <Text>{errors.firstName.message}</Text> : <Text>Name</Text>}
+            <Controller
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.input}
+                        onBlur={onBlur}
+                        onChangeText={value => onChange(value)}
+                        value={value}
+                    />
+                )}
+                name="firstName"
+                rules={{
+                    required: {
+                        value: true,
+                        message: 'This Required'
+                    },
+                    minLength: {
+                        value: 3,
+                        message: 'Min Lenght 3 symbol'
+                    },
+                    maxLength: {
+                        value: 8,
+                        message: 'Max Lenght 8 symbol'
+                    }
 
-                    <FormInput style={styles.input} name={LOGIN_FIELDS.password} label='Password' rules={{
-                        required: 'Password is required!',
-                        minLength: {
-                            message: 'Use at least 10 characters.',
-                            value: 10,
-                        },
-                    }} />
-                </FormProvider>
-                <Button title='Login' onPress={formMethods.handleSubmit(onSubmit, onErrors)} />
-            </View>
+                }}
+                defaultValue=""
+            />
+            
+            {errors.password ? <Text>{errors.password.message}</Text> : <Text>Password</Text>}
+            <Controller
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.input}
+                        onBlur={onBlur}
+                        onChangeText={value => onChange(value)}
+                        value={value}
+                    />
+                )}
+                name="password"
+                rules={{
+                    required: {
+                        value: true,
+                        message: 'This Required'
+                    },
+                    minLength: {
+                        value: 3,
+                        message: 'Min Lenght 3 symbol'
+                    },
+                    maxLength: {
+                        value: 8,
+                        message: 'Max Lenght 8 symbol'
+                    }
+                }}
+                defaultValue=""
+            />
+
+            <Button title="Submit" onPress={handleSubmit(onSubmit)} />
         </View>
-    )
-}
+    );
+};
 
-export default Login
+
+export default Login;
