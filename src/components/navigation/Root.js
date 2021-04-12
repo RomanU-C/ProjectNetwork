@@ -8,13 +8,17 @@ import ProfilePage from '../../screens/profileScreen/Profile';
 import { styles } from './Root.style';
 
 const Tab = createBottomTabNavigator();
+let flag = true;
+const checkAuth = !flag ? LoginPage : ProfilePage;
+
+
 
 
 const Root = () => {
  return (
         <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen name={ROUTE.LOGIN} component={LoginPage} style={styles.setingTabBar}/>
+          <Tab.Navigator>       
+            <Tab.Screen name={ROUTE.FIRST} component={checkAuth} style={styles.setingTabBar}/> 
             <Tab.Screen name={ROUTE.NEWS} component={NewsPage} style={styles.setingTabBar}/>
             <Tab.Screen name={ROUTE.PROFILE} component={ProfilePage} style={styles.setingTabBar}/>
           </Tab.Navigator>
