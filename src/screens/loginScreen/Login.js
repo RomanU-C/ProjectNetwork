@@ -5,7 +5,20 @@ import { styles } from "./Login.style";
 
 const Login = () => {
     const { control, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => (console.log(data));
+    const onSubmit = data =>{ 
+      let stringData = `Имя: ${data.firstName} Пароль: ${data.password}`;
+      Alert.alert(
+        "Вместо console.log()",
+        stringData,
+        [
+          {
+            text: "Отмена",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel"
+          },
+          { text: "ОК", onPress: () => console.log("OK Pressed") }
+        ]
+      );;}
 
     return (
         <View style={styles.loginContainer}>
