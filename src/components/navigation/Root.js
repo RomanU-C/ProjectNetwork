@@ -7,7 +7,7 @@ import Login from '../../screens/loginScreen/Login';
 
 
 let Stack = createStackNavigator()
-let flag = true;
+let flag = false;
 
 
 const Root = () => {

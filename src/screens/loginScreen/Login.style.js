@@ -6,17 +6,30 @@ export const styles = StyleSheet.create({
      backgroundColor: '#e8e8e8',
      paddingHorizontal: 10,
      paddingVertical: 10,
-     alignItems: 'center'
+     alignItems: 'center',
+     justifyContent: 'center'
     },
-    loginInner: {
-      width: '90%',
+    loginContentWrapper: {
       display: 'flex',
+      position: 'relative',
+      width: '90%',
+      backgroundColor: '#fff',
+      paddingHorizontal: 20,
+      paddingVertical: 20,
+      borderRadius: 8
+    },
+    logoSetings: {
+      width: 60,
+      height: 60,
+      position: 'absolute',
+      left: '47%',
+      top: '-17%'
     },
     input: {
-        width: '60%',
         height: 40,
         margin: 12,
         borderWidth: 1,
         color: '#000',
+        borderRadius: 5,
       },
   });

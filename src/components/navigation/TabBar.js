@@ -1,14 +1,16 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ROUTE } from '../../constants';
 import NewsPage from '../../screens/newsScreen/News';
 import ProfilePage from '../../screens/profileScreen/Profile';
 import homeIcon from '../../assets/img/home.png'
-import { Image, View } from 'react-native';
-import { styles } from './Root.style';
+import { Image } from 'react-native';
 import Home from '../../screens/homeScree/Home';
 
+// function ExampleView(props) {
+//     return 
+//   }
 const Tab = createBottomTabNavigator();
 
 const TabBar = () => {
@@ -25,10 +27,9 @@ const TabBar = () => {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ focused, color, size }) => (
-              <View style={styles.setingImg}><Image name={homeIcon} color={color} size={size} /></View>
+                <Icon name="ios-person" size={30} color="#4F8EF7" />
             ),
           }}
-          
         />
         <Tab.Screen
           name={ROUTE.NEWS}
