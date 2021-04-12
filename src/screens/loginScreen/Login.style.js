@@ -3,8 +3,14 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     loginContainer: {
      flex: 1,
-     alignItems: 'center',
-     backgroundColor: '#696969'
+     backgroundColor: '#e8e8e8',
+     paddingHorizontal: 10,
+     paddingVertical: 10,
+     alignItems: 'center'
+    },
+    loginInner: {
+      width: '90%',
+      display: 'flex',
     },
     input: {
         width: '60%',
