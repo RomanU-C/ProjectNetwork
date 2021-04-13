@@ -1,26 +1,16 @@
-import React from "react";
-import { Text, View, TextInput, Button, Alert, Image } from "react-native";
+import React, { useState } from "react";
+import { Text, View, TextInput, Button, Image } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { styles } from "./Login.style";
+import { useDispatch } from "react-redux";
+import { flag, setUserData } from "../../redux/globalRedusers";
 
 const Login = () => {
+    const dispatch = useDispatch();
     const { control, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        let stringData = `Имя: ${data.firstName} Пароль: ${data.password}`;
-        Alert.alert(
-            "Вместо console.log()",
-            stringData,
-            [
-                {
-                    text: "Отмена",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "cancel"
-                },
-                { text: "ОК", onPress: () => console.log("OK Pressed") }
-            ]
-        );;
+        dispatch(flag(),setUserData(data))
     }
-
     return (
         <View style={styles.loginContainer}>
             <View style={styles.loginContentWrapper}>

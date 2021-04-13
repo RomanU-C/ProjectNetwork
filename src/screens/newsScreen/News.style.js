@@ -17,6 +17,11 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
         marginRight: 10,
     },
+    userName: {
+        fontSize: 20,
+        fontWeight: '900',
+        marginBottom: 5
+    },
     userPostImg: {
         width: '100%',
         height: 300

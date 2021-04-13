@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 const TabBar = () => {
   return (
       <Tab.Navigator
-        initialRouteName={ROUTE.HOME}
+        initialRouteName={ROUTE.NEWS}
         tabBarOptions={{
           activeTintColor: '#e91e63',
         }}
@@ -23,6 +23,7 @@ const TabBar = () => {
           name={ROUTE.HOME}
           component={Home}
           options={{
+            
             tabBarLabel: 'Home',
             tabBarIcon: ({ focused, color, size }) => (
                 <Icon name="home-outline" size={30} color="#a4a4b8" />
