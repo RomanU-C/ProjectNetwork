@@ -12,7 +12,7 @@ import { styles } from './News.style';
 
 const loading = false;
 const fetchData = () => {
-  
+
 }
 
 const DATA = [
@@ -24,13 +24,13 @@ const DATA = [
   },
   {
     id: '2',
-    userAvatar: './../../assets/img/joseph.jpeg',
+    userAvatar: './../../assets/img/joseph.jpg',
     userName: 'Jogan Joganowich',
     userPost: './../../assets/img/postImg2.jpg',
   },
   {
     id: '3',
-    userAvatar: './../../assets/img/richard.jpeg',
+    userAvatar: './../../assets/img/richard.JFIF',
     userName: 'Richard Richardiwich',
     userPost: './../../assets/img/postImg3.jpg',
   },]
