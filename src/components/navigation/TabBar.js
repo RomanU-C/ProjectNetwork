@@ -4,8 +4,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ROUTE } from '../../constants';
 import NewsPage from '../../screens/newsScreen/News';
 import ProfilePage from '../../screens/profileScreen/Profile';
-import homeIcon from '../../assets/img/home.png'
-import { Image } from 'react-native';
 import Home from '../../screens/homeScree/Home';
 
 // function ExampleView(props) {
@@ -27,7 +25,7 @@ const TabBar = () => {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ focused, color, size }) => (
-                <Icon name="ios-person" size={30} color="#4F8EF7" />
+                <Icon name="home-outline" size={30} color="#a4a4b8" />
             ),
           }}
         />
@@ -37,7 +35,7 @@ const TabBar = () => {
           options={{
             tabBarLabel: 'News',
             tabBarIcon: ({ focused, color, size }) => (
-              <Image name={homeIcon} color={color} size={size} />
+              <Icon name="newspaper-outline" size={30} color="#a4a4b8" />
             ),
             tabBarBadge: 3,
           }}
@@ -48,7 +46,7 @@ const TabBar = () => {
           options={{
             tabBarLabel: 'Profile',
             tabBarIcon: ({ color, size }) => (
-              <Image name={homeIcon} color={color} size={size} />
+              <Icon name="person-outline" size={30} color="#a4a4b8" />
             ),
           }}
         />

@@ -7,18 +7,18 @@ import Login from '../../screens/loginScreen/Login';
 
 
 let Stack = createStackNavigator()
-let flag = false;
+
 
 
 const Root = () => {
+  let flag = true
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        {!flag ? <Stack.Screen name="Login" component={Login} /> :
-        <Stack.Screen name="TabBar" component={TabBar} />}
-      </Stack.Navigator>
-    </NavigationContainer>
-   
+      <NavigationContainer>
+        <Stack.Navigator>
+          {!flag ? <Stack.Screen name="Login" component={Login} /> :
+            <Stack.Screen name="Hello Inside" component={TabBar} />}
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 };
 
