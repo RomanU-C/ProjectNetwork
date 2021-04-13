@@ -6,10 +6,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <Root />
-    </Provider>
-     
+    </Provider> 
   );
-  
 };
 
 export default App;
