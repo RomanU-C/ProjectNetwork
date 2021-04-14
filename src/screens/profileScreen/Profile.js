@@ -8,17 +8,32 @@ import {
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { styles } from './Profile.style';
-import { Button, Icon } from "react-native-elements";
+import { Icon } from "react-native-elements";
 import CustomButton from './CustomButton'
 import { Input } from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setNewsData } from '../../redux/globalRedusers'
 
 const ProfilePage = () => {
   const [stateImg, setStateImg] = useState('')
   const [stateInput, changeStateInput] = useState('')
+  const dispatch = useDispatch();
+  const curentUserName = useSelector(state=>state.state.userLoginData.userName)
+
   const bs = React.createRef()
   const fall = new Animated.Value(1)
+  
+  const data = {
+    curentUserName: curentUserName,
+    stateImg: stateImg
+  }
+  console.log(data)
+  const changeNewsPage = () => {
+    dispatch(setNewsData(data))
+  }
+
+
 
   const addPhotoFromGalery = () => {
     ImagePicker.openPicker({
@@ -51,6 +66,7 @@ const ProfilePage = () => {
     </View>)
   return (
     <View style={styles.container}>
+      <Text></Text>
       <BottomSheet
         renderHeader={renderHeader}
         ref={bs}
@@ -80,7 +96,7 @@ const ProfilePage = () => {
           value={stateInput}
           onChangeText={(text) => { changeStateInput(text) }}
         />
-        <CustomButton title='Save Change' />
+        <CustomButton title='Save Change' onPress={changeNewsPage}/>
       </View>
     </View>
   );

@@ -11,11 +11,22 @@ import { Input } from 'react-native-elements';
 
 
 const CustomForm = () => {
+    const [userLogin, setUserLogin] = useState('');
+    const [userPass, setUserPass] = useState('');
+    const userLoginData = {
+        userLogin: userLogin,
+        userPass: userPass}
     const dispatch = useDispatch();
     const { control, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => {
+    const onSubmit = () => {
         dispatch(flag());
-        dispatch(setUserData(data))
+        dispatch(setUserData(userLoginData))
+    }
+    const onChengeUserLogin = (text) => {
+        setUserLogin(text)
+    }
+    const onChengeUserPass = (text) => {
+        setUserPass(text)
     }
     return (
         <View style={styles.loginContentWrapper}>
@@ -29,7 +40,10 @@ const CustomForm = () => {
                             placeholder='Name'
                             leftIcon={{ type: 'font-awesome', name: 'chevron-right', size: 15 }}
                             onBlur={onBlur}
-                            onChangeText={value => onChange(value)}
+                            onChangeText={text => {
+                                onChange(text)
+                                onChengeUserLogin(text)
+                            }}
                             value={value}
                         />
                     )}
@@ -47,7 +61,10 @@ const CustomForm = () => {
                             placeholder='Password'
                             leftIcon={{ type: 'font-awesome', name: 'chevron-right', size: 15 }}
                             onBlur={onBlur}
-                            onChangeText={value => onChange(value)}
+                            onChangeText={text => {
+                                onChange(text)
+                                onChengeUserPass(text)
+                            }}
                             value={value}
                         />
                     )}
