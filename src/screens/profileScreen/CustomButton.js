@@ -3,11 +3,10 @@ import { Button } from "react-native-elements";
 
 
 const CustomButton = (props) => {
-  const title = props.title;
-  const handleSubmit = () => { }
+  const {title, onPress} = props;
   return (
     <Button
-          onPress={handleSubmit()}
+          onPress={onPress}
           buttonStyle={{ width: 250, backgroundColor: '#eb5050' }}
           containerStyle={{
             margin: 10,

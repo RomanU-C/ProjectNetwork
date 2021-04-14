@@ -5,25 +5,48 @@ import {
   View,
   Image
 } from 'react-native';
-import { useSelector } from 'react-redux';
 import Animated from 'react-native-reanimated';
 import BottomSheet from 'reanimated-bottom-sheet';
 import { styles } from './Profile.style';
 import { Button, Icon } from "react-native-elements";
 import CustomButton from './CustomButton'
 import { Input } from 'react-native-elements';
+import ImagePicker from 'react-native-image-crop-picker';
 
 
 const ProfilePage = () => {
+  const [stateImg, setStateImg] = useState('')
   const [stateInput, changeStateInput] = useState('')
   const bs = React.createRef()
   const fall = new Animated.Value(1)
+
+  const addPhotoFromGalery = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true
+    }).then(image => {
+      setStateImg(image.path)
+      bs.current.snapTo(0)
+      console.log(image)
+    });
+  }
+  const addPhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setStateImg(image.path)
+    });
+  }
+
   const renderHeader = () => (
     <View style={styles.wrapper}>
       <View>
         <Text style={styles.textStyle}>Load IMG</Text>
-        <CustomButton title='Add from gallery' />
-        <CustomButton title='Create photo' />
+        <CustomButton title='Add from gallery' onPress={addPhotoFromGalery} />
+        <CustomButton title='Create photo' onPress={addPhotoFromCamera} />
       </View>
     </View>)
   return (
@@ -40,13 +63,14 @@ const ProfilePage = () => {
         <View></View>
         <TouchableWithoutFeedback onPress={() => bs.current.snapTo(0)}>
           <View style={styles.dropPhotoWrapper}>
+            {stateImg ? <Image style={styles.imagePrev} source={{uri: stateImg}} /> : 
             <Icon
-              color="#eb5050"
-              name="send"
-              onLongPress={() => console.log("onLongPress()")}
-              size={50}
-              type="material"
-            />
+            color="#eb5050"
+            name="send"
+            size={50}
+            type="material"
+          />
+            }
             <Text>Tap to send</Text>
           </View>
         </TouchableWithoutFeedback>
@@ -54,9 +78,9 @@ const ProfilePage = () => {
           placeholder='Add description'
           leftIcon={{ type: 'font-awesome', name: 'chevron-right', size: 15 }}
           value={stateInput}
-          onChangeText={(text)=>{changeStateInput(text)}}
+          onChangeText={(text) => { changeStateInput(text) }}
         />
-        <CustomButton title='Save Change'/>
+        <CustomButton title='Save Change' />
       </View>
     </View>
   );

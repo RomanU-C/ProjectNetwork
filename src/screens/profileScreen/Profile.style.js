@@ -37,5 +37,9 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
 
+    },
+    imagePrev: {
+        width: 200,
+        height: 200
     }
   });
