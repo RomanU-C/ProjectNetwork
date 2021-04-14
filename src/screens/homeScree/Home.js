@@ -14,7 +14,7 @@ const Home = () => {
     <ScrollView>
       <Text style={styles.textStyle}>Your Friends</Text>
       {userData.map((user) =>
-        <UserCardItem name={user.userName} status={user.status} url={{ uri: user.userAvatar }} />
+        <UserCardItem name={user.userName} key={user.id} status={user.status} url={{ uri: user.userAvatar }} />
       )}
     </ScrollView>
   );
