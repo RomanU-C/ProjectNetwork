@@ -14,7 +14,7 @@ const ProfilePage = () => {
 
  return (
         <View>
-          <Text>{userData.password}</Text>
+          <Text>Users Online</Text>
         </View>
   );
 };

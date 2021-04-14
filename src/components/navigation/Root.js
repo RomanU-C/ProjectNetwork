@@ -11,12 +11,14 @@ let Stack = createStackNavigator()
 const Root = () => {
   const flagState = useSelector(state => state.state.flagState)
   return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          {!flagState ? <Stack.Screen name="Login" component={Login} /> :
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+        {!flagState ? <Stack.Screen name="Login" component={Login} /> :
           <Stack.Screen name="Hello Inside" component={TabBarCustom} />}
-        </Stack.Navigator>
-      </NavigationContainer>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
